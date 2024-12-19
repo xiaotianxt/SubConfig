@@ -55,7 +55,7 @@ jobs:
       - name: run subconverter
         run: |
           echo 下载subconverter,
-          curl -s -L -O $(curl -s -L 'https://api.github.com/repos/tindy2013/subconverter/releases' | jq -r '.[0].assets[]| select(.name == "subconverter_linux64.tar.gz").browser_download_url')
+          curl -s -L -O $(curl -s -L 'https://api.github.com/repos/xiaotianxt/subconverter/releases' | jq -r '.[0].assets[]| select(.name == "subconverter_linux64.tar.gz").browser_download_url')
           tar -zxf subconverter_linux64.tar.gz
           cd subconverter
           echo 更改base_path以便支持缓存base配置文件，
@@ -94,7 +94,7 @@ jobs:
         run: |
           SUBSCRIBE_FILE=subscribe
           default_config="_SubConfig/subconverter.ini"
-          params="emoji=true&list=false&udp=true&tfo=false&scv=false&fdn=false&sort=false&new_name=true"
+          params="emoji=true&list=false&udp=true&tfo=false&scv=true&fdn=false&sort=false&new_name=true"
           mkdir -p subconverter/sub
           echo 先整理出订阅数组，
           cat subscribe |jq -srR 'split("\n")|map(select(length > 0))' > subscribe.json

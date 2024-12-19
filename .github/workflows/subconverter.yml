@@ -73,7 +73,7 @@ jobs:
       - name: run subconverter
         run: |
           echo 下载subconverter,
-          code=$(curl -s -L -o release -w '%{http_code}' -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" 'https://api.github.com/repos/tindy2013/subconverter/releases/latest')
+          code=$(curl -s -L -o release -w '%{http_code}' -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" 'https://api.github.com/repos/xiaotianxt/subconverter/releases/latest')
           if [[ "$code" != 200 ]]
           then
               echo api请求异常，
@@ -119,7 +119,7 @@ jobs:
         run: |
           SUBSCRIBE_FILE=subscribe
           default_config="_SubConfig/subconverter.ini"
-          params="emoji=true&list=false&udp=false&tfo=false&scv=false&fdn=false&sort=false&new_name=true"
+          params="emoji=true&list=false&udp=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true"
           mkdir -p subconverter/sub
           echo 先整理出订阅数组，
           cat subscribe |jq -srR 'split("\n")|map(select(length > 0))' > subscribe.json
